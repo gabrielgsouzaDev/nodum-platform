@@ -6,7 +6,7 @@ import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { PrismaExceptionFilter } from './common/filters/prisma-exception.filter';
 import helmet from 'helmet';
 
-import * as compression from 'compression';
+import compression from 'compression';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
