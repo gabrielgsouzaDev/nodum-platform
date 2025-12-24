@@ -3,7 +3,7 @@
  * Gerencia tokens JWT e comunicação com o Kernel Backend.
  */
 
-const BASE_URL = 'http://localhost:3000';
+const BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
 
 export async function apiFetch(endpoint: string, options: RequestInit = {}) {
     const token = typeof window !== 'undefined' ? localStorage.getItem('nodum_token') : null;

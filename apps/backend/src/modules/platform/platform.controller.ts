@@ -13,7 +13,7 @@ import { ApiTags, ApiOperation, ApiBearerAuth } from '@nestjs/swagger';
 @UseGuards(JwtAuthGuard, RolesGuard)
 @Controller('platform')
 export class PlatformController {
-  constructor(private readonly platformService: PlatformService) {}
+  constructor(private readonly platformService: PlatformService) { }
 
   @Post('systems')
   @Roles(UserRole.GLOBAL_ADMIN)
@@ -29,5 +29,12 @@ export class PlatformController {
   @ApiOperation({ summary: 'Lista todos os sistemas afiliados na plataforma' })
   async findAll() {
     return this.platformService.findAllSystems();
+  }
+
+  @Get('plans')
+  @Roles(UserRole.GLOBAL_ADMIN)
+  @ApiOperation({ summary: 'Lista todos os planos ativos' })
+  async listPlans() {
+    return this.platformService.listAllPlans();
   }
 }

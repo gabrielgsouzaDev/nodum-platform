@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useAuth } from '@/contexts/auth-context';
+import { apiFetch } from '@/lib/api';
 import { Lock, User, Terminal, Loader2 } from 'lucide-react';
 
 export default function LoginPage() {
@@ -17,17 +18,10 @@ export default function LoginPage() {
         setError('');
 
         try {
-            const response = await fetch('http://localhost:3000/auth/login', {
+            const data = await apiFetch('/auth/login', {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email, password }),
             });
-
-            const data = await response.json();
-
-            if (!response.ok) {
-                throw new Error(data.message || 'Falha na autenticação');
-            }
 
             if (data.user.role !== 'GLOBAL_ADMIN') {
                 throw new Error('Acesso restrito a Administradores Globais.');

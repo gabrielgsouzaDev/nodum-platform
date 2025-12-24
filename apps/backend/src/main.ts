@@ -28,6 +28,8 @@ async function bootstrap() {
     origin: [
       'http://localhost:3000', // Frontend Local 1
       'http://localhost:3001', // Frontend Local 2
+      'https://nodum-platform-nodum-console.vercel.app', // Vercel Console
+      'https://trilingually-unmurmurous-maurita.ngrok-free.dev', // Tunnel Ngrok
       'https://app.seunome.com', // Produção Cliente
       'https://admin.seunome.com', // Produção Admin
     ],

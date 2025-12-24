@@ -9,7 +9,7 @@ import { CreateSystemDto } from './dto/create-system.dto';
 
 @Injectable()
 export class PlatformService {
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(private readonly prisma: PrismaService) { }
 
   /**
    * Cria uma nova vertical de negócio no ecossistema NODUM.
@@ -37,6 +37,13 @@ export class PlatformService {
   async findAllSystems() {
     return (this.prisma as any).platformSystem.findMany({
       include: { _count: { select: { schools: true } } },
+    });
+  }
+
+  async listAllPlans() {
+    return this.prisma.plan.findMany({
+      where: { status: 'ACTIVE' },
+      select: { id: true, name: true, price: true, maxStudents: true }
     });
   }
 }
