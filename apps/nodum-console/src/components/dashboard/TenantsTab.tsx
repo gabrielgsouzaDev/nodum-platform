@@ -9,6 +9,7 @@ import {
     CheckCircle2,
     Clock
 } from 'lucide-react';
+import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { useState, useMemo } from 'react';
